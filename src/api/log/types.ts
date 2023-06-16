@@ -1,5 +1,5 @@
 export interface LogList {
-    categories: Log[]
+    logs: Log[]
 }
 export interface Log {
     log_id: string,
