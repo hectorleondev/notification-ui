@@ -1,8 +1,9 @@
 import React from 'react';
+import {Home} from "./pages/home";
 
 function App() {
   return (
-    <div>Learn React</div>
+    <Home />
   );
 }
 

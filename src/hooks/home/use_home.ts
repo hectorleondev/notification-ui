@@ -17,21 +17,23 @@ export const useHome = () => {
 
     const [openAddDialog, setOpenAddDialog ] = useState(false);
 
-    useEffect(() => {
+    const load_data = async () => {
         setLoading(true);
         setErrorMessage('');
-        const load_data = async () => {
-            try {
-                const categories = await CategoryService.get_category_list()
-                setCategoryList(categories.data);
-                const response = await LogService.get_log_list()
-                setLogList(response.data);
-            } catch (error: any) {
-                setErrorMessage(error.message);
-            } finally {
-                setLoading(false);
-            }
+        try {
+            const categories = await CategoryService.get_category_list()
+            setCategoryList(categories.data);
+            const response = await LogService.get_log_list()
+            let sorted_data = response.data.logs.sort((a, b)=> (a.create_at > b.create_at)? -1: 1);
+            setLogList({logs: sorted_data});
+        } catch (error: any) {
+            setErrorMessage(error.message);
+        } finally {
+            setLoading(false);
         }
+    }
+
+    useEffect(() => {
         load_data();
     }, []);
 
@@ -43,6 +45,10 @@ export const useHome = () => {
         setOpenAddDialog(false);
     };
 
+    const onAfterAdd = useCallback(() => {
+        load_data();
+    }, []);
+
     return {
         loading,
         errorMessage,
@@ -51,5 +57,6 @@ export const useHome = () => {
         openAddDialog,
         handleClickOpenAddDialog,
         handleCloseAddDialog,
+        onAfterAdd
     }
 }
