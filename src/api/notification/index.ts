@@ -3,7 +3,7 @@ import {SaveNotificationRequest, SaveNotificationResponse} from "./types";
 
 class NotificationService {
     save_calculation(data: SaveNotificationRequest) {
-        return http.patch<SaveNotificationResponse>("/notification/test", JSON.stringify(data))
+        return http.post<SaveNotificationResponse>("/notification/subscribers", JSON.stringify(data))
     }
 }
 export default new NotificationService();
