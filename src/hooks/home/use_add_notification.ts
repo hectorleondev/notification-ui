@@ -50,17 +50,6 @@ export const useAddNotification = (handleClose: ()=>void, onAfterAdd: ()=>void) 
     const onAddClick = useCallback(async () => {
         setMessage('');
         setLoading(true);
-        /*
-        const response = await fetch('https://7hbsmqn32h.execute-api.us-east-1.amazonaws.com/notification/test', {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-              'Content-Type': 'application/json',
-            }
-          })
-          console.log(response.json())
-*/
-
         NotificationService.save_calculation({
             category_id: categoryType,
             message
