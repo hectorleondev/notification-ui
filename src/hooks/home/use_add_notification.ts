@@ -32,7 +32,6 @@ export const useAddNotification = (handleClose: ()=>void, onAfterAdd: ()=>void) 
     const onClose = useCallback(() => {
         setUpForm();
         handleClose()
-        setLoading(false);
         setDisableButton(true);
         setErrorMessage('');
     }, []);
