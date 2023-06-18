@@ -16,6 +16,7 @@ export const useAddNotification = (handleClose: ()=>void, onAfterAdd: ()=>void) 
     const setUpForm = () => {
         setMessage('');
         setCategoryType('0');
+        setLoading(false);
     }
 
     const onChangeCategory = useCallback((event: SelectChangeEvent) => {

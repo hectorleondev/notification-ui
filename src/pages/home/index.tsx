@@ -53,6 +53,7 @@ export const Home = () => {
                                             <TableCell>Phone Number</TableCell>
                                             <TableCell>Category</TableCell>
                                             <TableCell>Channel</TableCell>
+                                            <TableCell>Message</TableCell>
                                             <TableCell>Created At</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -69,6 +70,7 @@ export const Home = () => {
                                                 <TableCell>{item.phone_number}</TableCell>
                                                 <TableCell>{item.category}</TableCell>
                                                 <TableCell>{item.channel}</TableCell>
+                                                <TableCell>{item.message}</TableCell>
                                                 <TableCell>{item.create_at}</TableCell>
                                             </TableRow>
                                         ))}
