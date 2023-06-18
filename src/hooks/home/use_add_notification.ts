@@ -47,21 +47,32 @@ export const useAddNotification = (handleClose: ()=>void, onAfterAdd: ()=>void) 
     }, [categoryType]);
 
 
-    const onAddClick = useCallback(() => {
+    const onAddClick = useCallback(async () => {
         setMessage('');
         setLoading(true);
-        const request: any = {
-            "category_id": categoryType,
-            "message": message
-        }
-        NotificationService.save_calculation(request).then((res)=>{
-            //onClose();
-            //onAfterAdd();
+        /*
+        const response = await fetch('https://7hbsmqn32h.execute-api.us-east-1.amazonaws.com/notification/test', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          })
+          console.log(response.json())
+*/
+
+        NotificationService.save_calculation({
+            category_id: categoryType,
+            message
+        }).then((res)=>{
+            onClose();
+            onAfterAdd();
         })
         .catch((e: any) => {
             setErrorMessage(e.response.data.message);
         })
         .finally(()=>setLoading(false))
+    
 
     }, [message, categoryType]);
 

@@ -43,7 +43,6 @@ resources:
                 - POST
                 - DELETE
                 - HEAD
-              MaxAge: 3000
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html

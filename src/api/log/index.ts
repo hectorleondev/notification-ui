@@ -1,4 +1,4 @@
-import http from "../common";
+import {http} from "../common";
 import {LogList} from "./types";
 
 class LogService {

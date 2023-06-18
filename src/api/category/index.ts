@@ -1,4 +1,4 @@
-import http from "../common";
+import {http} from "../common";
 import {CategoryList} from "./types";
 
 class CategoryService {
